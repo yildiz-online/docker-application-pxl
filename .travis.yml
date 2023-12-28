@@ -11,4 +11,4 @@ services:
   - docker
 
 before_install:
-  - docker build --build-arg GH_TOKEN=$GITHUB_TOKEN --build-arg=nexus_retro_password=$nexus_retro_password -t moussavdb/application-retro-pxl_server:latest .
+  - docker build --build-arg GH_TOKEN=$GITHUB_TOKEN --build-arg=nexus_retro_password=$nexus_retro_password --build-arg=test=$test -t moussavdb/application-retro-pxl_server:latest .
