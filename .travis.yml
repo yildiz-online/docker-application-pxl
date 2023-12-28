@@ -11,4 +11,11 @@ services:
   - docker
 
 before_install:
-  - docker build --build-arg GH_TOKEN=$GITHUB_TOKEN --build-arg nexus_retro_password=$nexus_retro_password  -t moussavdb/application-retro-pxl_server:latest .
+  - mkdir -vp ~/.docker/cli-plugins/
+  - curl --silent -L "https://github.com/docker/buildx/releases/download/v0.12.0/buildx-v0.12.0.linux-amd64" > ~/.docker/cli-plugins/docker-buildx
+  - chmod a+x ~/.docker/cli-plugins/docker-buildx
+  
+script:
+  - docker login -u="moussavdb" -p="$DOCKER_PASSWORD";
+  - docker buildx create --use
+  - docker buildx build --build-arg GH_TOKEN=$GITHUB_TOKEN --build-arg nexus_retro_password=$nexus_retro_password --push --platform linux/arm64/v8 --tag moussavdb/application-retro-pxl_server:latest .
