@@ -1,10 +1,11 @@
 arch:
-  - arm64
+  - amd64
 os: linux
-
 dist: jammy
+git:
+  depth: false
 
-language: shell
+language: bash
 
 services:
   - docker
