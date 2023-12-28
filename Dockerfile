@@ -10,3 +10,11 @@ ARG nexus_retro_password
 WORKDIR /app
 COPY --from=clone /app/retro-player /app
 RUN mvn package -s settings.xml -Pbuild-assembly -Pjavafx -DskipTests
+
+FROM moussavdb/runtime-java:21
+MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
+EXPOSE 8989
+WORKDIR /app
+COPY server /app
+COPY --from=build /app/target/player-assembly.jar /app
+CMD ["java", "-jar", "--enable-preview", "player-assembly.jar"]
