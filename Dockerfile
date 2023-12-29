@@ -2,7 +2,7 @@ FROM alpine/git as clone
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
 ARG GH_TOKEN
 WORKDIR /app
-RUN git clone https://$GH_TOKEN@github.com/yildiz-online/retro-player.git
+RUN git clone -b master https://$GH_TOKEN@github.com/yildiz-online/retro-player.git
 
 FROM moussavdb/build-java:21 as build
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
