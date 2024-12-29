@@ -11,7 +11,7 @@ WORKDIR /app
 COPY --from=clone /app/retro-player /app
 RUN mvn package -s settings.xml -Pbuild-assembly -Pjavafx -DskipTests
 
-FROM moussavdb/runtime-java:23
+FROM moussavdb/runtime-java:lts
 MAINTAINER Grégory Van den Borre <vandenborre.gregory@hotmail.fr>
 EXPOSE 8989
 WORKDIR /app
