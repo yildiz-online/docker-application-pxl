@@ -15,6 +15,5 @@ FROM moussavdb/runtime-java:lts
 LABEL maintainer="Grégory Van den Borre <vandenborre.gregory@hotmail.fr>"
 EXPOSE 8989
 WORKDIR /app
-COPY server /app
 COPY --from=build /app/target/player-assembly.jar /app
 CMD ["java", "-jar", "player-assembly.jar"]
