@@ -9,7 +9,7 @@ LABEL maintainer="Grégory Van den Borre <vandenborre.gregory@hotmail.fr>"
 ARG nexus_retro_password
 WORKDIR /app
 COPY --from=clone /app/retro-player-server /app
-RUN mvn package -s settings.xml -Pbuild-assembly -Pjavafx -DskipTests
+RUN mvn package -s settings.xml -Pbuild-assembly -DskipTests
 
 FROM moussavdb/runtime-java:lts
 LABEL maintainer="Grégory Van den Borre <vandenborre.gregory@hotmail.fr>"
